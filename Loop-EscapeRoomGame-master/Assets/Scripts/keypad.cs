@@ -18,7 +18,7 @@ public class keypad : MonoBehaviour
 
     [SerializeField] private Animator ani;
     [Header("Keypad Settings")]
-    public string curPassword = "4321";
+    public string curPassword ;
     public string input;
     public Text displayText;
     // public AudioSource audioData;
@@ -32,7 +32,7 @@ public class keypad : MonoBehaviour
     void Start()
     {
         btnClicked = 0; // No of times the button was clicked
-        numOfGuesses = curPassword.Length; // Set the password length.
+        numOfGuesses = 6; // Set the password length.
         buttonPress.ButtonPressed += ValueEntered;
     }
 
@@ -41,6 +41,7 @@ public class keypad : MonoBehaviour
     {
         if (btnClicked == numOfGuesses)
         {
+            Debug.Log(numOfGuesses);
             if (input == curPassword)
             {
                 //Load the next scene

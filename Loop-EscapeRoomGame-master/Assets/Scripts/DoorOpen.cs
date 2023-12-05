@@ -4,18 +4,41 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    Animator animator;
-    // Start is called before the first frame update
+    private Animator animator;
     public Transform player;
+    private bool isInRange = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
+
+    private void Update()
+    {
+        if (isInRange && Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayAnimation();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform == player && other.GetComponent<player>().IsKeyhold)//玩家拿到钥匙，进入碰撞区，播放动画
+        if (other.transform == player && other.GetComponent<player>().IsKeyhold)
         {
-            animator.SetTrigger("opening");
+            isInRange = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform == player)
+        {
+            isInRange = false;
+        }
+    }
+
+    void PlayAnimation()
+    {
+        animator.SetTrigger("opening");
     }
 }
