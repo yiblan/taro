@@ -18,7 +18,7 @@ public class keypad : MonoBehaviour
 
     [SerializeField] private Animator ani;
     [Header("Keypad Settings")]
-    public string curPassword = "1234";
+    public string curPassword = "4321";
     public string input;
     public Text displayText;
     // public AudioSource audioData;
